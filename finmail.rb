@@ -4,10 +4,11 @@ require 'nokogiri'
 require_relative 'article'
 require_relative 'parser'
 require_relative 'source'
+require_relative 'social/facebook'
 
 module Finmail
   class Application
-    attr_reader :email, :sources
+    attr_reader :email, :sources, :news
     
     def initialize
       @email = 'mike.nicklas@gmail.com'
@@ -20,7 +21,7 @@ module Finmail
       sources.each do |source|
         src = Source.new(source)
         src.articles.each do |article|
-          puts "#{article.source} | #{article.title}"
+          puts "#{article.source} | #{article.title} -- #{Social::Facebook.signal(article.link)}"
         end
       end
       all
