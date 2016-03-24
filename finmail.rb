@@ -17,12 +17,13 @@ module Finmail
     
     def get_news
       all = []
-      @sources.each do |source|
+      sources.each do |source|
         src = Source.new(source)
-        src.get_articles.each do |article|
+        src.articles.each do |article|
           puts "#{article.source} | #{article.title}"
         end
       end
+      all
     end
     
   end
