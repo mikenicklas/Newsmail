@@ -16,7 +16,12 @@ module Finmail
       end
       
       def content(article, attr)
-        article.at(attr).inner_text
+        section = article.at(attr)
+        if section.respond_to?('inner_text')
+          section.inner_text
+        else
+          ''
+        end
       end
       
     end
