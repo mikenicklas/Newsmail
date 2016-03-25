@@ -32,5 +32,5 @@ module Finmail
   end
 end
 
-a = Finmail::Application.new
-puts a.get_news
+#a = Finmail::Application.new
+#puts a.get_news
