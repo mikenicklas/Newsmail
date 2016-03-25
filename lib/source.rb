@@ -1,15 +1,15 @@
 module Finmail
   class Source
-    attr_reader :title, :feed_url, :articles
+    attr_reader :title, :feed, :articles
     
     def initialize(opts={})
       @title = opts[:title]
-      @feed_url = opts[:feed]
+      @feed = opts[:feed]
       @articles = []
     end
     
     def get_articles
-      xml = Parser.parse_source(feed_url)
+      xml = Parser.parse_source(feed)
       xml.search('//item').each do |article|
         parse_and_create_article(article)
       end
