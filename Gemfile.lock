@@ -29,6 +29,11 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    temple (0.7.6)
+    tilt (2.0.2)
 
 PLATFORMS
   ruby
@@ -37,6 +42,7 @@ DEPENDENCIES
   gmail
   nokogiri
   rspec
+  slim
 
 BUNDLED WITH
    1.11.2

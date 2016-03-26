@@ -6,6 +6,8 @@ require_relative 'article'
 require_relative 'parser'
 require_relative 'source'
 require_relative 'social/facebook'
+require_relative 'mail'
+require_relative 'mailer/builder'
 
 module Finmail
   class Application
