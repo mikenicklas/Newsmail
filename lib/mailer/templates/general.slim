@@ -1,11 +1,8 @@
-doctype html
-html
-  body
-    h1= self[:title]
-    p= 'Here is your article update'
-    
-    - self[:articles].each do |article|
-      div style="margin-bottom: 15px;"
-        h3 = article.title
-        p = article.description
-        a href="#{article.link}" Read More
+h1 style="border-bottom: 1px solid gray; margin-bottom: 20px"
+  = Time.now.strftime('%D')
+
+- self[:articles].each do |article|
+  div style="margin-bottom: 15px;"
+    h3 = article.title
+    p = article.description
+    a href="#{article.link}" Read More

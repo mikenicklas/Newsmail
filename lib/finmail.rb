@@ -12,14 +12,12 @@ require_relative 'mailer/builder'
 
 module Finmail
   class Application
-    attr_reader :email, :sources, :news
+    attr_accessor :sources, :news
     
     def initialize
-      @email = 'mike.nicklas@gmail.com'
-      @sources = [{title: 'U.S. Business', feed:'http://www.wsj.com/xml/rss/3_7014.xml'}, 
-                  {title: 'Markets News', feed: 'http://www.wsj.com/xml/rss/3_7031.xml'},
-                  {title: 'CNN Markets', feed: 'http://rss.cnn.com/rss/money_markets.rss'},
-                  {title: 'Seeking Alpha', feed: 'http://seekingalpha.com/tag/wall-st-breakfast.xml'}]
+      @news = []
+      @sources = [{title: 'U.S. Business', feed:'http://www.wsj.com/xml/rss/3_7014.xml'},
+                  {title: 'Markets News', feed: 'http://www.wsj.com/xml/rss/3_7031.xml'}]
     end
     
     def get_news
@@ -27,6 +25,7 @@ module Finmail
       sources.each do |source|
         src = Source.new(source)
         src.articles.each do |article|
+          @news << article
           puts "#{article.source} | #{article.title} -- #{Social::Facebook.signal(article.link)}"
         end
       end
@@ -34,12 +33,13 @@ module Finmail
     end
     
     def send_mail
-      mailer = Finmail::Mail.new
+      mailer = Finmail::Mail.new(articles: @news)
       mailer.send
     end
     
   end
 end
 
-#a = Finmail::Application.new
-#puts a.get_news
+# a = Finmail::Application.new
+# a.get_news
+# a.send_mail
