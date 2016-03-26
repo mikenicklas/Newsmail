@@ -21,15 +21,11 @@ module Finmail
     end
     
     def get_news
-      all = []
       sources.each do |source|
         src = Source.new(source)
-        src.articles.each do |article|
-          @news << article
-          puts "#{article.source} | #{article.title} -- #{Social::Facebook.signal(article.link)}"
-        end
+        @news << src.articles
       end
-      all
+      @news.flatten!
     end
     
     def send_mail
