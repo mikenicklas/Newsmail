@@ -3,8 +3,13 @@ module Finmail
     
     attr_reader :rendered_content
     
-    def initialize(content=[])
-      @rendered_content = Finmail::Mailer::Builder.render(content)
+    def initialize
+      articles = []
+      content = {}
+      @rendered_content = Finmail::Mailer::Builder.render(articles: articles, content: content)
+    end
+    
+    def send
     end
     
   end
