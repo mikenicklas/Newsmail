@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'gmail'
 
 require_relative 'article'
 require_relative 'parser'
@@ -27,6 +28,11 @@ module Finmail
         end
       end
       all
+    end
+    
+    def send_mail
+      mailer = Finmail::Mail.new
+      mailer.send
     end
     
   end
