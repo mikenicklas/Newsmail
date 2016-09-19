@@ -1,2 +1,2 @@
 require 'rspec'
-require_relative '../lib/finmail'
+require_relative '../lib/Newsmail'

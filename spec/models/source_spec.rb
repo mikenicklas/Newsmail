@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Finmail::Source do
+describe Newsmail::Source do
   
-  subject{ Finmail::Source }
+  subject{ Newsmail::Source }
   
   it 'should accept and assign initialization options' do
     opts = {title: 'XYZ Times', feed: 'http://asdf.com'}
@@ -15,7 +15,7 @@ describe Finmail::Source do
   describe '#parse_and_create_article' do    
     let(:source) { subject.new }
     it 'should article and append to @articles' do
-      allow(Finmail::Parser).to receive(:parse_article).and_return({})
+      allow(Newsmail::Parser).to receive(:parse_article).and_return({})
       source.parse_and_create_article('article')
       allow(source).to receive(:title).and_return 'Awesome Title'
       articles = source.instance_variable_get('@articles')

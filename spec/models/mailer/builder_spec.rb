@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Finmail::Mailer::Builder do
+describe Newsmail::Mailer::Builder do
   
-  subject { Finmail::Mailer::Builder }
+  subject { Newsmail::Mailer::Builder }
   
   it 'should render slim template with content attrs' do
     pending 'Will add content information later'
@@ -14,7 +14,7 @@ describe Finmail::Mailer::Builder do
     articles, content = [], {title: 'Your Articles'}
     ['Article 1', 'Article 2'].each do |article|
       opts = {link: "http://#{article}", description: "#{article * 10}", title: article}
-      articles << Finmail::Article.new('The Times', opts)
+      articles << Newsmail::Article.new('The Times', opts)
     end
     template = subject.render(articles: articles, content: content)
     expect(template.split('Read More').size).to eql 3

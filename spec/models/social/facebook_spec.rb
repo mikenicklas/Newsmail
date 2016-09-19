@@ -1,8 +1,8 @@
 require 'spec_helper'
 require 'json'
 
-describe Finmail::Social::Facebook do
-  subject{ Finmail::Social::Facebook }
+describe Newsmail::Social::Facebook do
+  subject{ Newsmail::Social::Facebook }
   
   it 'should declare a BASE' do
     expect(subject::BASE).to be_truthy

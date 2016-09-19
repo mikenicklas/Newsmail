@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'gmail'
 require 'slim'
+require 'pry'
 
 require_relative 'article'
 require_relative 'parser'
@@ -10,14 +11,14 @@ require_relative 'social/facebook'
 require_relative 'mail'
 require_relative 'mailer/builder'
 
-module Finmail
+module Newsmail
   class Application
     attr_accessor :sources, :news
     
     def initialize
       @news = []
-      @sources = [{title: 'U.S. Business', feed:'http://www.wsj.com/xml/rss/3_7014.xml'},
-                  {title: 'Markets News', feed: 'http://www.wsj.com/xml/rss/3_7031.xml'}]
+      @sources = [{title: 'Top Stories', feed:'http://rss.cnn.com/rss/cnn_topstories.rss'},
+                  {title: 'U.S. Stories', feed: 'http://rss.cnn.com/rss/cnn_us.rss'}]
     end
     
     def get_news
@@ -29,13 +30,13 @@ module Finmail
     end
     
     def send_mail
-      mailer = Finmail::Mail.new(articles: @news)
+      mailer = Newsmail::Mail.new(articles: @news)
       mailer.send
     end
     
   end
 end
 
-# a = Finmail::Application.new
-# a.get_news
-# a.send_mail
+a = Newsmail::Application.new
+a.get_news
+a.send_mail

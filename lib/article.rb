@@ -1,4 +1,4 @@
-module Finmail
+module Newsmail
   class Article
     attr_reader :title, :link, :description, :source
     

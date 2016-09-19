@@ -1,4 +1,4 @@
-module Finmail
+module Newsmail
   module Mailer
     class Builder
       

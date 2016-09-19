@@ -1,4 +1,4 @@
-module Finmail
+module Newsmail
   # A basic class to parse the raw XML from source URLs and
   # parse the individual contents of each article.
   #
@@ -17,11 +17,7 @@ module Finmail
       
       def content(article, attr)
         section = article.at(attr)
-        if section.respond_to?('inner_text')
-          section.inner_text
-        else
-          ''
-        end
+        section.respond_to?('inner_text') ? section.inner_text : ''
       end
       
     end

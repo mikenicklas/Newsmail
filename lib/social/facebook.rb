@@ -1,7 +1,7 @@
 require 'open-uri'
 require 'json'
 
-module Finmail
+module Newsmail
   module Social
     
     class Facebook  

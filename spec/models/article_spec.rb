@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Finmail::Article do
+describe Newsmail::Article do
   
-  subject { Finmail::Article.new('source_name', {}) }
+  subject { Newsmail::Article.new('source_name', {}) }
   
   it 'should assign a source' do
     expect(subject.source).to eql 'source_name'

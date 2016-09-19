@@ -1,8 +1,8 @@
-module Finmail
+module Newsmail
   class Mail    
     def initialize(articles:[])
       content = {title: 'Hey there'}
-      @rendered_content = Finmail::Mailer::Builder.render(articles: articles, content: content)
+      @rendered_content = Newsmail::Mailer::Builder.render(articles: articles, content: content)
     end
     
     def send
@@ -10,7 +10,7 @@ module Finmail
       Gmail.connect!(ENV['EMAIL_ADDRESS'], ENV['EMAIL_PASSWORD']) do |gmail|
         gmail.deliver do
           to ENV['EMAIL_ADDRESS']
-          subject 'Your Finmail Update'
+          subject 'Your Newsmail Update'
           html_part do
             content_type 'text/html; charset=UTF-8'
             body message_body
